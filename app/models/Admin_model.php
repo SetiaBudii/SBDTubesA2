@@ -28,23 +28,35 @@ class Admin_model {
         return $this->db->resultSet();
     }
 
-    public function tambahAkun($data){
-        $query = "BEGIN 
-                    registrasiAccount (:username, :password, :email, :role , :notelp , :nama);
-                  END;";
 
-        $this->db->query($query);
-        $this->db->bind('username', $data['TambahUsername']);
-        $this->db->bind('password', $data['TambahPass']);
-        $this->db->bind('email', $data['TambahEmail']);
-        $this->db->bind('role', $data['TambahRole']);
-        $this->db->bind('notelp', $data['TambahNo']);
-        $this->db->bind('nama', $data['TambahNama']);
-
+    public function checkUsernameEmail($data){
+        $this->db->query("SELECT COUNT(USERNAME) AS TOTAL FROM ACCOUNT WHERE USERNAME = :username OR EMAIL = :email");
+        $this->db->bind('username', $data['tambahUsername']);
+        $this->db->bind('email', $data['tambahEmail']);
         $this->db->execute();
-
-        return $this->db->rowCount();
+        return $this->db->single();
     }
+
+    public function tambahAkun($data){
+        $row['USER'] = $this->checkUsernameEmail($data);
+        if(  intval($row['USER']['TOTAL']) > 0 ){
+          return 0;
+        }else{
+          $query = "BEGIN 
+                      registrasiAccount (:username, :password, :email, :role , :notelp , :nama);
+                    END;";
+    
+          $this->db->query($query);
+          $this->db->bind('username', $data['tambahUsername']);
+          $this->db->bind('password', $data['tambahPassword']);
+          $this->db->bind('role', $data['tambahRole']);
+          $this->db->bind('email', $data['tambahEmail']);
+          $this->db->bind('notelp', $data['tambahNo']);
+          $this->db->bind('nama', $data['tambahNama']);
+          $this->db->execute();
+          return $this->db->rowCount();
+        }
+      }
 
      public function updateInfo($data){
             $query = "BEGIN 

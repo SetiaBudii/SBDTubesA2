@@ -37,15 +37,12 @@ class Home extends Controller{
 
       if ($this->model('Home_model')->loginUser($_POST) > 0 ){
             if($role['ROLE'] == 'ADMIN'){
-              Flasher::setFlash('berhasil','login','success');
               header('Location:'. BASEURL .'/admin/dashboard');
               exit;
             }else if($role['ROLE'] == 'PANITIA'){
-              Flasher::setFlash('berhasil','login','success');
               header('Location:'. BASEURL .'/panitia/dashboard');
               exit;
             }else{
-              Flasher::setFlash('berhasil','login','success');
               header('Location:'. BASEURL .'/pendaftar/dashboard');
               exit;
             }

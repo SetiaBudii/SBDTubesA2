@@ -1,24 +1,9 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="row">
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-12 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Total Akun</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Akun</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-user-circle fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-        </div>
+    <a href="#addEmployeeModal" data-toggle="modal" class="btn btn-success btn-icon-split mb-4">
+          <span class="icon text-white-50"><i class="fas fa-plus-circle"></i></span>
+           <span class="text">Tambah Akun</span>
+    </a>
         <div class="row">
         <div class="col">
             <?php Flasher::flash();?>
@@ -168,7 +153,7 @@
                         <td class="fsize"><?=$account['NOTELP'];?></td>
                         <th>
                             <a href="#editEmployeeModal" data-toggle="modal" class="btn btn-warning btn-circle mr-2 editAkun" data-id="<?=$account['USERID'];?>"><i class="far fa-edit"></i>
-                            <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i>
+                            <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger btn-circle hapusAkun" ><i class="fas fa-trash"></i>
                         </th>
                         </tr>
                         <?php endforeach; ?>
@@ -260,6 +245,50 @@
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
 					<input type="submit" class="btn btn-danger" value="Hapus">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<!-- Add Modal HTML -->
+<div id="addEmployeeModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form action="<?= BASEURL; ?>/admin/tambahUser" method="post">
+				<div class="modal-header">						
+					<h4 class="modal-title">Tambah Akun</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">	
+                    <div class="form-group">
+						<input type="text" class="form-control" id="tambahUsername" name="tambahUsername" placeholder="Username" required>
+					</div>				
+                    <div class="form-group">
+						<input type="text" class="form-control" placeholder="Password" id="tambahPassword" name="tambahPassword" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Email" id="tambahEmail" name="tambahEmail" required>
+					</div>
+                    <div class="form-group">
+                        <select class="form-control" id="tambahRole" name="tambahRole">
+                            <option>Pilih Role</option>
+                            <option value="ADMIN">Admin</option>
+                            <option value="PESERTA">Pendaftar</option>
+                            <option value="PANITIA">Panitia</option>
+                          </select>
+					</div>				
+                    <div class="form-group">
+						<input type="text" class="form-control" placeholder="Nama Lengkap" id="tambahNama" name="tambahNama" required>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="No Telepon" id="tambahNo" name="tambahNo" required>
+					</div>						
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-danger" data-dismiss="modal" value="Batal">
+					<input type="submit" class="btn btn-primary" value="Buat Akun">
 				</div>
 			</form>
 		</div>

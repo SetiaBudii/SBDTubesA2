@@ -9,17 +9,6 @@ class Admin extends Controller{
         $this->view('templates/footer');
     }
 
-    public function dasboard(){
-        $data['judul'] = 'ADMINISTRATOR';
-        $data['table'] = $this->model('Admin_model')->getAllUser();
-        $data['admin'] = $this->model('Admin_model')->getAdmin();
-        $data['panitia'] = $this->model('Admin_model')->getPanitia();
-        $data['pendaftar'] = $this->model('Admin_model')->getPendaftar();
-        $this->view('templates/header',$data);
-        $this->view('admin/dasboard',$data);
-        $this->view('templates/footer');
-    }
-
     public function infoAkun(){
         $data['judul'] = 'Admin';
         $data['table'] = $this->model('Admin_model')->getAllUser();
@@ -44,7 +33,12 @@ class Admin extends Controller{
 
     public function tambahUser(){
         if ($this->model('Admin_model')->tambahAkun($_POST) > 0 ){
-            header('Location:'. BASEURL .'/admin/dasboard');
+            Flasher::setFlash('berhasil','dibuat','success');
+            header('Location:'. BASEURL .'/admin/infoAkun');
+            exit;
+        }else{
+            Flasher::setFlash('gagal','dibuat','danger');
+            header('Location:'. BASEURL .'/admin/infoAkun');
             exit;
         }
     }
