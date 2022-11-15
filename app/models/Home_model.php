@@ -13,7 +13,7 @@ class Home_model
     return $this->db->single();
   }
 
-  public function checkUsername($data){
+  public function checkUsernameEmail($data){
     $this->db->query("SELECT COUNT(USERNAME) AS TOTAL FROM ACCOUNT WHERE USERNAME = :username OR EMAIL = :email");
     $this->db->bind('username', $data['Username']);
     $this->db->bind('email', $data['Email']);
@@ -21,9 +21,20 @@ class Home_model
     return $this->db->single();
   }
 
+  public function checkUsernamePass($data){
+    if($this->checkName($data) > 0 ){
+        $pass = $this->getPass($data);
+        if($pass['PASSWORD'] == $data['Password']){
+          return 1;
+        }
+    }else{
+      return 0;
+    }
+  }
+
   public function tambahAkun($data){
-    $row['USER'] = $this->checkUsername($data);
-    if(  $row['USER']['TOTAL'] <= 0 ){
+    $row['USER'] = $this->checkUsernameEmail($data);
+    if(  intval($row['USER']['TOTAL']) > 0 ){
       return 0;
     }else{
       $query = "BEGIN 
@@ -44,12 +55,7 @@ class Home_model
   }
 
   public function loginUser($data){
-    $this->db->query("SELECT * FROM ACCOUNT WHERE USERNAME = :username AND PASSWORD = :pass");
-    $this->db->bind('username', $data['Username']);
-    $this->db->bind('pass', $data['Password']);
-    $this->db->execute();
-   
-    if( $this->db->single() == false){
+    if( $this->checkUsernamePass($data) == 0){
       return 0;
     }else{
       return 1;
@@ -63,4 +69,17 @@ class Home_model
     return $this->db->single();
   }
 
+  public function getPass($data){
+    $this->db->query("SELECT PASSWORD FROM ACCOUNT WHERE USERNAME = :username");
+    $this->db->bind('username', $data['Username']);
+    $this->db->execute();
+    return $this->db->single();
+  }
+
+  public function checkName($data){
+    $this->db->query("SELECT COUNT(USERNAME) AS TOTAL FROM ACCOUNT WHERE USERNAME = :username");
+    $this->db->bind('username', $data['Username']);
+    $this->db->execute();
+    return $this->db->single();
+  }
 }

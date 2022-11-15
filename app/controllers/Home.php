@@ -3,10 +3,10 @@
 class Home extends Controller{
     public function index(){
         $data['judul'] = 'Home';
-        $dat['Username'] = 'Zaky';
-        $dat['Email'] = '1';
-        $dat['Password'] = "1";
-        $data['uuu'] = $this->model('Home_model')->checkUsername($dat);
+        $dat['Password'] = '1';
+        $dat['Username'] = 'Reka09';
+        $dat['Email'] = 'Reka09';
+        $data['a']= $this->model('Home_model')->checkUsernamePass($dat);
         $this->view('templates/header',$data);
         $this->view('home/login',$data);
         $this->view('templates/footer');
@@ -33,13 +33,14 @@ class Home extends Controller{
     }
 
     public function loginAccount(){
-      $data['akun'] = $this->model('Home_model')->getRole($_POST);
+      $role = $this->model('Home_model')->getRole($_POST);
+
       if ($this->model('Home_model')->loginUser($_POST) > 0 ){
-            if($data['akun']['ROLE'] == 'ADMIN'){
+            if($role['ROLE'] == 'ADMIN'){
               Flasher::setFlash('berhasil','login','success');
               header('Location:'. BASEURL .'/admin/dashboard');
               exit;
-            }else if($data['akun']['ROLE'] == 'PANITIA'){
+            }else if($role['ROLE'] == 'PANITIA'){
               Flasher::setFlash('berhasil','login','success');
               header('Location:'. BASEURL .'/panitia/dashboard');
               exit;

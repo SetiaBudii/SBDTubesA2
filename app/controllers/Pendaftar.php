@@ -16,7 +16,7 @@ class Pendaftar extends Controller{
         $data['totalPanitia'] = $this->model('Admin_model')->getTotalPanitia();
         $data['totalPendaftar'] = $this->model('Admin_model')->getTotalPendaftar();
         $this->view('templates/headerAdmin',$data);
-        $this->view('admin/dashboard',$data);
+        $this->view('Pendaftar/dashboard',$data);
         $this->view('templates/footer',$data);
     }
 }
