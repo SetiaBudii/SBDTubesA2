@@ -107,7 +107,7 @@ class Database
     public function colCount()
     {
       $this->execute();
-      return $this->statement->columnCount();
+      return $this->statement->fetchColumn();
     }
 
     // untuk menampilkan data tertentu

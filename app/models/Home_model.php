@@ -69,6 +69,13 @@ class Home_model
     return $this->db->single();
   }
 
+  public function getnama($data){
+    $this->db->query("SELECT NAME FROM ACCOUNT WHERE USERNAME = :username");
+    $this->db->bind('username', $data['Username']);
+    $this->db->execute();
+    return $this->db->single();
+  }
+
   public function getPass($data){
     $this->db->query("SELECT PASSWORD FROM ACCOUNT WHERE USERNAME = :username");
     $this->db->bind('username', $data['Username']);
@@ -82,4 +89,36 @@ class Home_model
     $this->db->execute();
     return $this->db->single();
   }
+
+  public function CheckExistUsername($data){
+    $val = 0;
+    $query = "BEGIN
+                  :var := CHECKUNAME(:Name);
+              END;";
+    $this->db->query($query);
+    $this->db->bind('Name',$data['Username']);
+    $this->db->bindOutput('var', $val);
+    $this->db->execute();
+    return $val;
+  }
+
+  public function CheckExistEmail($data){
+    $val = 0;
+    $query = "BEGIN
+                  :var := CHECKUNAME(:Name);
+              END;";
+    $this->db->query($query);
+    $this->db->bind('Name',$data['Username']);
+    $this->db->bindOutput('var', $val);
+    $this->db->execute();
+    return $val;
+  }
+
+  // Backup
+  // public function checkName($data){
+  //   $this->db->query("SELECT COUNT(USERNAME) AS TOTAL FROM ACCOUNT WHERE USERNAME = :username");
+  //   $this->db->bind('username', $data['Username']);
+  //   $this->db->execute();
+  //   return $this->db->single();
+  // }
 }

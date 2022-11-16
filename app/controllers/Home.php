@@ -2,11 +2,7 @@
 
 class Home extends Controller{
     public function index(){
-        $data['judul'] = 'Home';
-        $dat['Password'] = '1';
-        $dat['Username'] = 'Reka09';
-        $dat['Email'] = 'Reka09';
-        $data['a']= $this->model('Home_model')->checkUsernamePass($dat);
+        $data['judul'] = 'Login';
         $this->view('templates/header',$data);
         $this->view('home/login',$data);
         $this->view('templates/footer');
@@ -34,8 +30,13 @@ class Home extends Controller{
 
     public function loginAccount(){
       $role = $this->model('Home_model')->getRole($_POST);
+      $name = $this->model('Home_model')->getnama($_POST);
 
       if ($this->model('Home_model')->loginUser($_POST) > 0 ){
+        $_SESSION["username"] = $_POST['Username'];
+        $_SESSION["role"] = $role['ROLE'];
+        $_SESSION["name"] = $name['NAME'];
+
             if($role['ROLE'] == 'ADMIN'){
               header('Location:'. BASEURL .'/admin/dashboard');
               exit;
@@ -51,5 +52,13 @@ class Home extends Controller{
             header('Location:'. BASEURL .'/home/index');
             exit;
       }
+    }
+
+    public function logOut(){
+      unset($_SESSION['username']);
+      unset($_SESSION['role']);
+      unset($_SESSION['name']);
+      header('Location:'. BASEURL .'/home/index');
+      exit;
     }
 }
