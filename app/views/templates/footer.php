@@ -21,8 +21,13 @@
 
 <!-- Page level custom scripts -->
 <script src="<?= BASEURL; ?>/js/dataTable.js"></script>
+<script src="<?= BASEURL; ?>/js/berita.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
+
 <script>
     var ctx = document.getElementById("myAkun");
     var myAkun = new Chart(ctx, {

@@ -110,11 +110,31 @@ class Admin_model {
     }
 
     public function hapusAkun($data){
-        $query = "DELETE FROM PENDAFTAR WHERE USERID = :id";
+        $role = $this->getRoleAccount($data);
         
+        if($role == 'ADMIN'){
+            $query = "DELETE FROM ADMIN WHERE USERID = :id";
+        }elseif($role == 'PANITIA'){
+            $query = "DELETE FROM PANITIA WHERE USERID = :id";
+        }else{
+            $query = "DELETE FROM PENDAFTAR WHERE USERID = :id";
+        }
+
         $this->db->query($query);
         $this->db->bind('id', $data['hapusid']);
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function getRoleAccount($data){
+        $val = 0 ;
+        $query = "BEGIN
+                      :var := GETROLE(:id);
+                  END;";
+        $this->db->query($query);
+        $this->db->bind('id',$data['hapusid']);
+        $this->db->bindOutput('var', $val);
+        $this->db->execute();
+        return $val;
+      }
 }

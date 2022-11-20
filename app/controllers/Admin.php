@@ -22,6 +22,8 @@ class Admin extends Controller{
 
     public function dashboard(){
         $data['judul'] = 'Admin';
+        $dat['hapusid'] = '1000';
+        $data['coba'] = $this->model('Admin_model')->getRoleAccount($dat);
         $data['totalAdmin'] = $this->model('Admin_model')->getTotalAdmin();
         $data['totalAccount'] = $this->model('Admin_model')->getTotalAccount();
         $data['totalPanitia'] = $this->model('Admin_model')->getTotalPanitia();
@@ -61,5 +63,22 @@ class Admin extends Controller{
             header('Location:'. BASEURL .'/admin/infoAkun');
             exit;
         }
+    }
+
+
+    public function berita(){
+        $data['judul'] = 'Berita';
+        $data['admin'] = $this->model('Admin_model')->getAdmin();
+        $this->view('templates/headerAdmin',$data);
+        $this->view('admin/berita',$data);
+        $this->view('templates/footer',$data);
+    }
+
+    public function listberita(){
+        $data['judul'] = 'Berita';
+        $data['admin'] = $this->model('Admin_model')->getAdmin();
+        $this->view('templates/headerAdmin',$data);
+        $this->view('admin/listberita',$data);
+        $this->view('templates/footer',$data);
     }
 }

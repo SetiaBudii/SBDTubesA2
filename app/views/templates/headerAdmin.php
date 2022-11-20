@@ -12,7 +12,6 @@
     <link href="<?= BASEURL; ?>/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= BASEURL; ?>/css/sbadmin2-sidebar-toggle.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-</head>
 
 <!-- Cek apakah User sudah login atau belum -->
 <?php 
@@ -58,9 +57,15 @@
         </li>
         <hr class="sidebar-divider my-0">
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?= BASEURL; ?>/admin/berita">
+                <i class="fa fa-upload"></i>
+                <span>Upload Berita</span></a>
+        </li>
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item">
+            <a class="nav-link" href="<?= BASEURL; ?>/admin/listberita">
                 <i class="far fa-newspaper"></i>
-                <span>Berita</span></a>
+                <span>List Berita</span></a>
         </li>
     </ul>
     <!-- End of Sidebar -->

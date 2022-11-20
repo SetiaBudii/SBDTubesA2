@@ -4,7 +4,7 @@ $(document).ready( function () {
         "bLengthChange": false,
         "bFilter": true,
         "bInfo": false,
-        "bAutoWidth": false });
+        "bAutoWidth": false});
 } );
 
 $(document).ready( function () {
@@ -15,6 +15,7 @@ $(document).ready( function () {
         "bInfo": false,
         "bAutoWidth": false });
 } );
+
 $(document).ready( function () {
     $('#tablePanitia').DataTable({
         "bPaginate": false,
@@ -23,6 +24,7 @@ $(document).ready( function () {
         "bInfo": false,
         "bAutoWidth": false });
 } );
+
 $(document).ready( function () {
     $('#tablePendaftar').DataTable({
         "bPaginate": false,
@@ -31,3 +33,5 @@ $(document).ready( function () {
         "bInfo": false,
         "bAutoWidth": false });
 } );
+
+
