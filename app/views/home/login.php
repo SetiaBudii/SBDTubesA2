@@ -11,7 +11,7 @@
 				<div class="signin-content">
 					<div class="signin-image">
 						<figure>
-							<img src="<?=BASEURL; ?>/images/SMK.png" alt="sing up image">
+							<img src="<?=BASEURL; ?>/img/siswa.jpg" alt="sing up image">
 						</figure>
 						<a href="<?=BASEURL; ?>/home/register" class="signup-image-link">Buat Akun</a>
 					</div>

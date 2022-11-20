@@ -4,12 +4,12 @@ $(document).ready( function () {
         "bLengthChange": false,
         "bFilter": true,
         "bInfo": false,
-        "bAutoWidth": false
-        // "buttons": [
-        //     'pdf','excel'
-        // ],
-        // dom: 'Bfrtip',
-        // buttons: [
-        //     'copy','csv','excel', 'pdf', 'print'
-        });
+        "bAutoWidth": false,
+        "buttons": [
+            'print'
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+            'copy','csv','excel', 'pdf', 'print'
+        ]});
 } );

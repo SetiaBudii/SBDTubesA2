@@ -29,11 +29,13 @@ $date = date("j - n - Y");
                                 <input type="text" class="form-control" id="judul">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="isi">Isi Berita</label>
-                            <textarea class="form-control" id="isi" rows="3"></textarea>
+                        <div class="form-group mt-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFileLang" lang="in">
+                                <label class="custom-file-label" for="customFileLang">Upload File </label>
+                            </div>
                         </div>
-                        <div class="text-center">
+                        <div class="text-center mt-2">
                         <button type="submit" class="btn btn-primary text-center">Post</button></div>
                         </form>
                     </div>
