@@ -1,3 +1,10 @@
+<?php
+    if(isset($_POST['uploadTanggal'])){
+        echo $_POST['uploadTanggal'];
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +14,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Sukses Dunia Akhirat</h1>
+    <form class="mt-5 mb-4" action="" method="post" enctype="multipart/form-data">
+                                <label for="tgl">Tanggal Terbit</label>
+                                <input type="date" class="form-control" id="uploadTanggal"  name="uploadTanggal">
+                        <button type="submit" class="btn btn-primary text-center">Post</button>
+                        </form>
 </body>
 </html>

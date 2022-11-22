@@ -137,4 +137,18 @@ class Admin_model {
         $this->db->execute();
         return $val;
       }
-}
+
+      public function uploadBerita($data){
+
+            $query = "BEGIN 
+                         uploadBerita ('22' , :judul ,: tgl);
+                    END;";
+    
+          $this->db->query($query);
+          $this->db->bind('judul', $data['uploadJudul']);
+          $this->db->bind('tgl', $data['uploadTanggal']);
+          $this->db->execute();
+          return $this->db->rowCount();
+        }
+      }
+

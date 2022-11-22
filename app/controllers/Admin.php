@@ -65,7 +65,6 @@ class Admin extends Controller{
         }
     }
 
-
     public function berita(){
         $data['judul'] = 'Berita';
         $data['admin'] = $this->model('Admin_model')->getAdmin();
@@ -80,5 +79,15 @@ class Admin extends Controller{
         $this->view('templates/headerAdmin',$data);
         $this->view('admin/listberita',$data);
         $this->view('templates/footer',$data);
+    }
+
+    public function tambahBerita(){
+        if ($this->model('Admin_model')->uploadBerita($_POST) > 0 ){
+            header('Location:'. BASEURL .'/admin/listBerita');
+            exit;
+        }else{
+            header('Location:'. BASEURL .'/admin/listBerita');
+            exit;
+        }
     }
 }

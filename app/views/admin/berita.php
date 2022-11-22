@@ -5,6 +5,7 @@
 // Return current date from the remote server
 $date = date("j - n - Y"); 
 ?>
+
 <div class="container-fluid">
             <div class="row">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4 ml-1 text-center">
@@ -14,7 +15,7 @@ $date = date("j - n - Y");
                 <div class="row container text-dark border ml-2 mr-1 bg-white">
                 <div class="col-2"></div>
                     <div class="col-8">
-                    <form class="mt-5 mb-4">
+                    <form class="mt-5 mb-4" action="<?= BASEURL; ?>/admin/tambahBerita" method="post" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="form-group col-lg-6">
                                 <label for="uname">Username</label>
@@ -22,11 +23,11 @@ $date = date("j - n - Y");
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="tgl">Tanggal Terbit</label>
-                                <input type="text" class="form-control" id="tgl" value="<?= $date ?>" disabled>
+                                <input type="date" class="form-control" id="uploadTanggal"  name="uploadTanggal">
                             </div>
                             <div class="form-group col-lg-12">
                                 <label for="judul">Judul Berita</label>
-                                <input type="text" class="form-control" id="judul">
+                                <input type="text" class="form-control" id="uploadJudul" name="uploadJudul">
                             </div>
                         </div>
                         <div class="form-group mt-4">
