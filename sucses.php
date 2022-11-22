@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Sukses</h1>
+    <h1>Sukses Dunia Akhirat</h1>
 </body>
 </html>
