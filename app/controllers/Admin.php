@@ -82,7 +82,9 @@ class Admin extends Controller{
     }
 
     public function tambahBerita(){
-        if ($this->model('Admin_model')->uploadBerita($_POST) > 0 ){
+        // echo var_dump($_FILES['files']);
+
+        if ($this->model('Admin_model')->uploadBerita($_POST,$_FILES) > 0 ){
             header('Location:'. BASEURL .'/admin/listBerita');
             exit;
         }else{

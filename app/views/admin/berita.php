@@ -32,8 +32,8 @@ $date = date("j - n - Y");
                         </div>
                         <div class="form-group mt-4">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFileLang" lang="in">
-                                <label class="custom-file-label" for="customFileLang">Upload File </label>
+                                <input type="file" class="custom-file-input" id="files" name="files" lang="in">
+                                <label class="custom-file-label" for="files">Upload File </label>
                             </div>
                         </div>
                         <div class="text-center mt-2">

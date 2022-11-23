@@ -138,17 +138,32 @@ class Admin_model {
         return $val;
       }
 
-      public function uploadBerita($data){
+      public function uploadBerita($data,$filenya){
 
-            $query = "BEGIN 
-                         uploadBerita ('22' , :judul ,: tgl);
-                    END;";
+        $name =  $this->renameFileBerita();
+        move_uploaded_file($filenya['files']['tmp_name'],"../public/File/Berita/".  $name . ".pdf");
+
+        $query = "BEGIN 
+                    uploadBerita ('22' , :judul ,: tgl);
+                  END;";
     
-          $this->db->query($query);
-          $this->db->bind('judul', $data['uploadJudul']);
-          $this->db->bind('tgl', $data['uploadTanggal']);
-          $this->db->execute();
-          return $this->db->rowCount();
-        }
-      }
+        $this->db->query($query);
+        $this->db->bind('judul', $data['uploadJudul']);
+        $this->db->bind('tgl', $data['uploadTanggal']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function renameFileBerita(){
+        $id = 0;
+        $query = " BEGIN
+                    select MAX (ID)+1 into :beritaid FROM berita;
+                 END;";
+
+            $this->db->query($query);
+            $this->db->bindOutput('beritaid', $id);
+            $this->db->execute();
+            return $id;
+    }
+}
 
