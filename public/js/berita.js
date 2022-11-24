@@ -10,6 +10,6 @@ $(document).ready( function () {
         ],
         dom: 'Bfrtip',
         buttons: [
-            'excel', 'pdf', 'print'
+            'pdf'
         ]});
 } );

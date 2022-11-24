@@ -75,10 +75,20 @@ class Admin extends Controller{
 
     public function listberita(){
         $data['judul'] = 'Berita';
-        $data['admin'] = $this->model('Admin_model')->getAdmin();
+        $data['berita'] = $this->model('Admin_model')->getListBerita();
         $this->view('templates/headerAdmin',$data);
         $this->view('admin/listberita',$data);
         $this->view('templates/footer',$data);
+    }
+
+    public function hapusBerita(){
+        if ($this->model('Admin_model')->removeberita($_POST) > 0 ){
+            header('Location:'. BASEURL .'/admin/listberita');
+            exit;
+        }else{
+            header('Location:'. BASEURL .'/admin/listberita');
+            exit;
+        }
     }
 
     public function tambahBerita(){
@@ -86,9 +96,11 @@ class Admin extends Controller{
 
         if ($this->model('Admin_model')->uploadBerita($_POST,$_FILES) > 0 ){
             header('Location:'. BASEURL .'/admin/listBerita');
+            unset($_FILES);
             exit;
         }else{
             header('Location:'. BASEURL .'/admin/listBerita');
+            unset($_FILES);
             exit;
         }
     }

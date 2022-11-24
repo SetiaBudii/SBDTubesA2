@@ -39,6 +39,7 @@ class Admin_model {
 
     public function tambahAkun($data){
         $row['USER'] = $this->checkUsernameEmail($data);
+        
         if(  intval($row['USER']['TOTAL']) > 0 ){
           return 0;
         }else{
@@ -136,9 +137,9 @@ class Admin_model {
         $this->db->bindOutput('var', $val);
         $this->db->execute();
         return $val;
-      }
+    }
 
-      public function uploadBerita($data,$filenya){
+    public function uploadBerita($data,$filenya){
 
         $name =  $this->renameFileBerita();
         move_uploaded_file($filenya['files']['tmp_name'],"../public/File/Berita/".  $name . ".pdf");
@@ -158,12 +159,32 @@ class Admin_model {
         $id = 0;
         $query = " BEGIN
                     select MAX (ID)+1 into :beritaid FROM berita;
-                 END;";
+                   END;";
 
-            $this->db->query($query);
-            $this->db->bindOutput('beritaid', $id);
-            $this->db->execute();
-            return $id;
+        $this->db->query($query);
+        $this->db->bindOutput('beritaid', $id);
+        $this->db->execute();
+        return $id;
+    }
+
+    public function getListBerita(){
+        $this->db->query('SELECT BERITA.ID,BERITA.TGLUPLOAD,BERITA.JUDUL,ACCOUNT.USERNAME
+                            FROM BERITA JOIN ADMIN
+                                ON BERITA.ADMIN_ID = ADMIN.USERID
+                            JOIN ACCOUNT
+                                ON ACCOUNT.USERID = ADMIN.USERID');
+        return $this->db->resultSet();
+    }
+
+    public function removeberita($data){
+        $path = "../public/File/Berita/" . $data['removeNews'] . ".pdf" ;
+        unlink($path);
+        $query = "DELETE FROM BERITA WHERE ID = :id";
+    
+        $this->db->query($query);
+        $this->db->bind('id', $data['removeNews']);
+        $this->db->execute();
+        return $this->db->rowCount();
     }
 }
 
