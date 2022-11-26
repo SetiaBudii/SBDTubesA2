@@ -145,12 +145,13 @@ class Admin_model {
         move_uploaded_file($filenya['files']['tmp_name'],"../public/File/Berita/".  $name . ".pdf");
 
         $query = "BEGIN 
-                    uploadBerita ('22' , :judul ,: tgl);
+                    uploadBerita (:idAdmin , :judul ,: tgl);
                   END;";
     
         $this->db->query($query);
         $this->db->bind('judul', $data['uploadJudul']);
         $this->db->bind('tgl', $data['uploadTanggal']);
+        $this->db->bind('idAdmin',$_SESSION['id']);
         $this->db->execute();
         return $this->db->rowCount();
     }

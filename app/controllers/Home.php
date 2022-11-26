@@ -32,10 +32,12 @@ class Home extends Controller{
       $role = $this->model('Home_model')->getRole($_POST);
       $name = $this->model('Home_model')->getnama($_POST);
 
-      if ($this->model('Home_model')->loginUser($_POST) > 0 ){
+      // if ($this->model('Home_model')->loginUser($_POST) > 0 ){
+      if ($this->model('Home_model')->loginAccount($_POST) > 0 ){
         $_SESSION["username"] = $_POST['Username'];
         $_SESSION["role"] = $role['ROLE'];
         $_SESSION["name"] = $name['NAME'];
+        $_SESSION["id"] = $this->model('Home_model')->getIdAccount($_SESSION['username']);
 
             if($role['ROLE'] == 'ADMIN'){
               header('Location:'. BASEURL .'/admin/dashboard');
@@ -58,6 +60,7 @@ class Home extends Controller{
       unset($_SESSION['username']);
       unset($_SESSION['role']);
       unset($_SESSION['name']);
+      unset($_SESSION['id']);
       header('Location:'. BASEURL .'/home/index');
       exit;
     }
