@@ -74,12 +74,11 @@ class Home_model
 
   public function getRoleAccount($data){
     $val = 0 ;
-    $id = $this->getIdAccount($data['Username']);
     $query = "BEGIN
-                  :var := GETROLE(:name);
+                  :var := GETROLE(:id);
               END;";
     $this->db->query($query);
-    $this->db->bind('name',$id);
+    $this->db->bind('id',$data);
     $this->db->bindOutput('var', $val);
     $this->db->execute();
     return $val;
@@ -87,12 +86,11 @@ class Home_model
 
   public function getNameAccount($data){
     $val = 0 ;
-    $id = $this->getIdAccount($data['Username']);
     $query = "BEGIN
-                  :var := GETNAME(:name);
+                  :var := GETNAME (:id);
               END;";
     $this->db->query($query);
-    $this->db->bind('name',$id);
+    $this->db->bind('id',$data);
     $this->db->bindOutput('var', $val);
     $this->db->execute();
     return $val;
