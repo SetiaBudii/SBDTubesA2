@@ -1,3 +1,7 @@
+<?php
+	echo var_dump($data);
+?>
+
 <div class="main">
 <div class="row">
         <div class="col">

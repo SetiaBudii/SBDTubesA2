@@ -12,6 +12,7 @@ class Home extends Controller{
         if ($this->model('Home_model')->tambahAkun($_POST) > 0 ){
           Flasher::setFlash('berhasil','dibuat','success');
           header('Location:'. BASEURL .'/home/login');
+          echo $this->model('Home_model')->tambahAkun($_POST);
           exit;
         }else{
             Flasher::setFlash('gagal','dibuat, mohon periksa ulang apa yang anda inputkan!','danger');
@@ -22,7 +23,9 @@ class Home extends Controller{
 
       public function register(){
         $data['judul'] = 'Registrasi';
-        $data['akun'] = $this->model('Home_model')->getUser();
+        $data['Username'] = 'budi9';
+        $data['Email'] = '1';
+        $data['number'] = $this->model('Home_model')->checkAccount($data);
         $this->view('templates/header',$data);
         $this->view('home/register',$data);
         $this->view('templates/footer');

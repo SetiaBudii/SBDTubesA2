@@ -8,22 +8,9 @@ class Home_model
     $this->db       = new Database;
   }
 
-  public function getUser(){
-    $this->db->query("SELECT * FROM ACCOUNT WHERE USERNAME = 'Reka09' ");
-    return $this->db->single();
-  }
-
-  public function checkUsernameEmail($data){
-    $this->db->query("SELECT COUNT(USERNAME) AS TOTAL FROM ACCOUNT WHERE USERNAME = :username OR EMAIL = :email");
-    $this->db->bind('username', $data['Username']);
-    $this->db->bind('email', $data['Email']);
-    $this->db->execute();
-    return $this->db->single();
-  }
-
   public function tambahAkun($data){
-    $row['USER'] = $this->checkUsernameEmail($data);
-    if(  intval($row['USER']['TOTAL']) > 0 ){
+    $exist = $this->checkAccount($data);
+    if( $exist > 0 ){
       return 0;
     }else{
       $query = "BEGIN 
@@ -41,9 +28,9 @@ class Home_model
       $this->db->execute();
       return $this->db->rowCount();
     }
+
+    return $exist;
   }
-
-
 
   public function loginAccount($data){
     $val = 0 ;
@@ -73,30 +60,6 @@ class Home_model
     return $this->db->single();
   }
 
-  public function CheckExistUsername($data){
-    $val = 0;
-    $query = "BEGIN
-                  :var := CHECKUNAME(:Name);
-              END;";
-    $this->db->query($query);
-    $this->db->bind('Name',$data['Username']);
-    $this->db->bindOutput('var', $val);
-    $this->db->execute();
-    return $val;
-  }
-
-  public function CheckExistEmail($data){
-    $val = 0;
-    $query = "BEGIN
-                  :var := CHECKUNAME(:Name);
-              END;";
-    $this->db->query($query);
-    $this->db->bind('Name',$data['Username']);
-    $this->db->bindOutput('var', $val);
-    $this->db->execute();
-    return $val;
-  }
-
   public function getIdAccount($data){
     $val = 0 ;
     $query = "BEGIN
@@ -107,6 +70,47 @@ class Home_model
     $this->db->bindOutput('var', $val);
     $this->db->execute();
     return $val;
+  }
+
+  public function getRoleAccount($data){
+    $val = 0 ;
+    $id = $this->getIdAccount($data['Username']);
+    $query = "BEGIN
+                  :var := GETROLE(:name);
+              END;";
+    $this->db->query($query);
+    $this->db->bind('name',$id);
+    $this->db->bindOutput('var', $val);
+    $this->db->execute();
+    return $val;
+  }
+
+  public function getNameAccount($data){
+    $val = 0 ;
+    $id = $this->getIdAccount($data['Username']);
+    $query = "BEGIN
+                  :var := GETNAME(:name);
+              END;";
+    $this->db->query($query);
+    $this->db->bind('name',$id);
+    $this->db->bindOutput('var', $val);
+    $this->db->execute();
+    return $val;
+}
+
+  public function checkAccount($data){
+    $val = 0;
+    $query = "BEGIN
+                  :var := CHECKEXISTACCOUNT (:uname, :email);
+              END;";
+    $this->db->query($query);
+    $this->db->bind('uname',$data['Username']);
+    $this->db->bind('email',$data['Email']);
+    $this->db->bindOutput('var', $val);
+    $this->db->execute();
+    return $val;
+  }
+
 }
   
   /*Login tanpa function
@@ -142,5 +146,35 @@ class Home_model
         $this->db->execute();
         return $this->db->single();
       }
+
+      --- Register tanpa function
+        public function checkUsernameEmail($data){
+    $this->db->query("SELECT COUNT(USERNAME) AS TOTAL FROM ACCOUNT WHERE USERNAME = :username OR EMAIL = :email");
+    $this->db->bind('username', $data['Username']);
+    $this->db->bind('email', $data['Email']);
+    $this->db->execute();
+    return $this->db->single();
+  }
+
+  public function tambahAkun($data){
+    $row['USER'] = $this->checkUsernameEmail($data);
+    if(  intval($row['USER']['TOTAL']) > 0 ){
+      return 0;
+    }else{
+      $query = "BEGIN 
+                  registrasiAccount (:username, :password, :email, :role , :notelp , :nama);
+                END;";
+
+      $this->db->query($query);
+      $this->db->bind('username', $data['Username']);
+      $this->db->bind('password', $data['Password']);
+      $this->db->bind('role', $data['Role']);
+      $this->db->bind('email', $data['Email']);
+      $this->db->bind('notelp', $data['No']);
+      $this->db->bind('nama', $data['Nama']);
+
+      $this->db->execute();
+      return $this->db->rowCount();
+    }
+  }
   */
-}
