@@ -13,3 +13,10 @@ $(document).on("click", ".editAkun", function () {
     var ID = $(this).data('id');
     $(".modal-body #removeNews").val( ID );
   });
+
+
+  $(document).on("click", ".verif", function () {
+    var userId = $(this).data('id');
+    console.log(userId);
+    $(".modal-body #userid").val( userId );
+  });
