@@ -18,5 +18,5 @@ $(document).on("click", ".editAkun", function () {
   $(document).on("click", ".verif", function () {
     var userId = $(this).data('id');
     console.log(userId);
-    $(".modal-body #userid").val( userId );
+    $(".modal-body #noPendaftaran").val( userId );
   });

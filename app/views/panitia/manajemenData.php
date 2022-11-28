@@ -1,5 +1,9 @@
 <!-- Begin Page Content -->
-
+<div class="row">
+        <div class="col">
+            <?php Flasher::flash();?>
+        </div>
+    </div>
 <!-- Page Heading -->
 <div class="container-fluid">
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -24,16 +28,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td class="align-middle">2</td>
-                                                <td class="align-middle">3</td>
-                                                <td class="align-middle">3</td>
-                                                <td class="align-middle">5</td>
-                                                <td class="align-middle">100 Meter</td>
+                                            <?php foreach( $data['Zonasi'] as $formulir) :?>
+                                                <tr>
+                                                <td class="align-middle"><?=$formulir['USERNAME'];?></td>
+                                                <td class="align-middle"><?=$formulir['NISN'];?></td>
+                                                <td class="align-middle"><?=$formulir['NILAIUN'];?></td>
+                                                <td> L </td>
+                                                <td class="align-middle"><?=$formulir['JARAKALAMAT'];?></td>
                                                 <td><a href="">FILE IJAZAH</a><br>
                                                     <a href="">FILE KK</a></td>
-                                                <th class="text-center align-middle"> <a href="#verifikasiZonasi" data-toggle="modal" class="btn btn-success  ml-2">Verifikasi</i></th>
+                                                <th class="text-center align-middle"> <a href="#verifikasiZonasi" data-toggle="modal" class="btn btn-success ml-2 verif" data-id="<?=$formulir['NOPENDAFTARAN'];?>">Verifikasi</i></th>
                                             </tr>
+                                            <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -70,7 +76,7 @@
                                                 <td><a href="">FILE IJAZAH</a><br>
                                                     <a href="">FILE KK</a>
                                                     <a href="">FILE KIP</a></td>
-                                                <th class="text-center align-middle"> <a href="#verifikasiAfirmasi" data-toggle="modal" class="btn btn-success  ml-2">Verifikasi</i></th>
+                                                <th class="text-center align-middle"> <a href="#verifikasiAfirmasi" data-toggle="modal" class="btn btn-success ml-2 verif" data-id="<?=$formulir['NOPENDAFTARAN'];?>">Verifikasi</i></th>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -107,7 +113,7 @@
                                                 <td><a href="">FILE IJAZAH</a><br>
                                                     <a href="">FILE KK</a>
                                                     <a href="">FILE PRESTASI</a></td>
-                                                <th class="text-center align-middle"> <a href="#verifikasiPrestasi" data-toggle="modal" class="btn btn-success  ml-2">Verifikasi</i></th>
+                                                <th class="text-center align-middle"> <a href="#verifikasiPrestasi" data-toggle="modal" class="btn btn-success ml-2 verif" data-id="<?=$formulir['NOPENDAFTARAN'];?>">Verifikasi</i></th>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -132,25 +138,24 @@
 <div id="verifikasiZonasi" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form action="" method="post">
+			<form action="<?= BASEURL; ?>/panitia/updateTahap" method="post">
 				<div class="modal-header">						
 					<h4 class="modal-title">Verifikasi Data Pendaftar</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">	
                     <div class="form-group">
-						<input type="hidden" class="form-control" id="userid" name="userid">
+						<input type="hidden" class="form-control" id="noPendaftaran" name="noPendaftaran">
 					</div>		
                     <h5>Persyaratan : </h5>
                     <div class="form-check">
-
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="KK" name="KK">
                         <label class="form-check-label" for="flexCheckDefault"> Kartu Keluarga</label><br>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="IJ" name="IJ">
                         <label class="form-check-label" for="flexCheckDefault"> Ijazah</label><br>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="JRK" name="JRK">
                         <label class="form-check-label" for="flexCheckDefault"> Jarak</label><br>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="UN" name="UN">
                         <label class="form-check-label" for="flexCheckDefault"> Nilai</label><br>
                     </div>	
                     <br>
@@ -169,25 +174,24 @@
 <div id="verifikasiAfirmasi" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form action="" method="post">
+			<form action="<?= BASEURL; ?>/panitia/updateTahap" method="post">
 				<div class="modal-header">						
 					<h4 class="modal-title">Verifikasi Data Pendaftar</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">	
                     <div class="form-group">
-						<input type="hidden" class="form-control" id="userid" name="userid">
+						<input type="hidden" class="form-control" id="noPendaftaran" name="noPendaftaran">
 					</div>		
                     <h5>Persyaratan : </h5>
                     <div class="form-check">
-
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="1" id="KK" name="KK">
                         <label class="form-check-label" for="flexCheckDefault"> Kartu Keluarga</label><br>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="IJ" name="IJ">
                         <label class="form-check-label" for="flexCheckDefault"> Ijazah</label><br>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="UN" name="UN">
                         <label class="form-check-label" for="flexCheckDefault"> Nilai</label><br>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="KIP" name="KIP">
                         <label class="form-check-label" for="flexCheckDefault"> Kartu Indonesia Pintar</label><br>
                     </div>	
                     <br>
@@ -205,25 +209,24 @@
 <div id="verifikasiPrestasi" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form action="" method="post">
+			<form action="<?= BASEURL; ?>/panitia/updateTahap" method="post">
 				<div class="modal-header">						
 					<h4 class="modal-title">Verifikasi Data Pendaftar</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">	
                     <div class="form-group">
-						<input type="hidden" class="form-control" id="userid" name="userid">
+						<input type="hidden" class="form-control" id="noPendaftaran" name="noPendaftaran">
 					</div>		
                     <h5>Persyaratan : </h5>
                     <div class="form-check">
-
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="1" id="KK" name="KK">
                         <label class="form-check-label" for="flexCheckDefault"> Kartu Keluarga</label><br>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="IJ" name="IJ">
                         <label class="form-check-label" for="flexCheckDefault"> Ijazah</label><br>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="UN" name="UN">
                         <label class="form-check-label" for="flexCheckDefault"> Nilai</label><br>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="PR" name="PR">
                         <label class="form-check-label" for="flexCheckDefault"> Prestasi</label><br>
                     </div>	
                     <br>

@@ -66,9 +66,7 @@
         
         <hr class="sidebar-divider my-0">
         <li class="nav-item">
-            <a class="nav-link" href="index.htm
-            
-            hl">
+            <a class="nav-link" href="<?= BASEURL; ?>/panitia/listberita">
                 <i class="far fa-newspaper"></i>
                 <span>Berita</span></a>
         </li>
