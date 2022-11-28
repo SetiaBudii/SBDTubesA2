@@ -168,4 +168,12 @@ class Panitia_model
     $this->db->execute();
     return $this->db->resultSet();
   }
+
+  public function StatusSeleksi($char){ //function parameters, two variables.
+    if($char == "5"){
+         return "Terverifikasi";
+    }else{
+        return "Tidak/belum Terverifikasi";
+    }
+  }
 }

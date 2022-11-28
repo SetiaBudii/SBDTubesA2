@@ -74,7 +74,7 @@
                                                 <td class="align-middle">5</td>
                                                 <td class="align-middle">100 Meter</td>
                                                 <td><a href="">FILE IJAZAH</a><br>
-                                                    <a href="">FILE KK</a>
+                                                    <a href="">FILE KK</a><br>
                                                     <a href="">FILE KIP</a></td>
                                                 <th class="text-center align-middle"> <a href="#verifikasiAfirmasi" data-toggle="modal" class="btn btn-success ml-2 verif" data-id="<?=$formulir['NOPENDAFTARAN'];?>">Verifikasi</i></th>
                                             </tr>

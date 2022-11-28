@@ -1,4 +1,13 @@
 <!-- Begin Page Content -->
+<?php 
+    function StatusSeleksi($char){ //function parameters, two variables.
+        if($char == "5"){
+             return "Terverifikasi";
+        }else{
+            return "Tidak/belum Terverifikasi";
+        }
+    }
+?>
 <div class="container-fluid">
     <div class="row">
         <div class="col">
@@ -25,7 +34,6 @@
                             <th scope="col">NO FORMULIR</th>
                             <th scope="col">NISN</th>
                             <th scope="col">STATUS</th>
-                            <th scope="col">KETERANGAN</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,8 +42,7 @@
                         <td class="fsize"><?=$account['USERNAME'];?></td>
                         <td class="fsize"><?=$account['NOPENDAFTARAN'];?></td>
                         <td class="fsize"><?=$account['NISN'];?></td>
-                        <td class="fsize"><?=$account['STATUSSELEKSI'];?></td>
-                        <td class="fsize">dokumen masih belum lengkap</td>
+                        <td class="fsize"><?= $this->model('Panitia_model')->StatusSeleksi($account['STATUSSELEKSI']) ?></td>
                         </tr>
                         <?php endforeach; ?>
                         </tbody>
@@ -58,7 +65,6 @@
                             <th scope="col">NO FORMULIR</th>
                             <th scope="col">NISN</th>
                             <th scope="col">STATUS</th>
-                            <th scope="col">KETERANGAN</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,8 +73,7 @@
                         <td class="fsize"><?=$account['USERNAME'];?></td>
                         <td class="fsize"><?=$account['NOPENDAFTARAN'];?></td>
                         <td class="fsize"><?=$account['NISN'];?></td>
-                        <td class="fsize"><?=$account['STATUSSELEKSI'];?></td>
-                        <td class="fsize">dokumen masih belum lengkap</td>
+                        <td class="fsize"><?= $this->model('Panitia_model')->StatusSeleksi($account['STATUSSELEKSI']) ?></td>
                         </tr>
                         <?php endforeach; ?>
                         </tbody>
@@ -91,7 +96,6 @@
                             <th scope="col">NO FORMULIR</th>
                             <th scope="col">NISN</th>
                             <th scope="col">STATUS</th>
-                            <th scope="col">KETERANGAN</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -100,8 +104,7 @@
                         <td class="fsize"><?=$account['USERNAME'];?></td>
                         <td class="fsize"><?=$account['NOPENDAFTARAN'];?></td>
                         <td class="fsize"><?=$account['NISN'];?></td>
-                        <td class="fsize"><?=$account['STATUSSELEKSI'];?></td>
-                        <td class="fsize">dokumen masih belum lengkap</td>
+                        <td class="fsize"><?= $this->model('Panitia_model')->StatusSeleksi($account['STATUSSELEKSI']) ?></td>
                         </tr>
                         <?php endforeach; ?>
                         </tbody>
