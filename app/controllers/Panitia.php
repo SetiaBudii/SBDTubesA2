@@ -31,6 +31,8 @@ class Panitia extends Controller{
     public function ManajemenData(){
         $data['judul'] = 'Manajaemen Data';
         $data['Zonasi'] = $this->model('Panitia_model')->manajemenZonasi();
+        $data['Afirmasi'] = $this->model('Panitia_model')->manajemenAfirmasi();
+        $data['Prestasi'] = $this->model('Panitia_model')->manajemenPrestasi();
         $this->view('templates/headerPanitia');
         $this->view('panitia/ManajemenData',$data);
         $this->view('templates/footer');

@@ -35,8 +35,8 @@
                                                 <td class="align-middle"><?=$formulir['NILAIUN'];?></td>
                                                 <td> L </td>
                                                 <td class="align-middle"><?=$formulir['JARAKALAMAT'];?></td>
-                                                <td><a href="">FILE IJAZAH</a><br>
-                                                    <a href="">FILE KK</a></td>
+                                                <td><a href="<?= BASEURL; ?>/File/Berkas/<?="IJAZAH_". $formulir['NISN'] . ".pdf"?>">FILE IJAZAH</a><br>
+                                                    <a href="<?= BASEURL; ?>/File/Berkas/<?="KK_". $formulir['NISN'] . ".pdf"?>">FILE KK</a></td>
                                                 <th class="text-center align-middle"> <a href="#verifikasiZonasi" data-toggle="modal" class="btn btn-success ml-2 verif" data-id="<?=$formulir['NOPENDAFTARAN'];?>">Verifikasi</i></th>
                                             </tr>
                                             <?php endforeach; ?>
@@ -67,17 +67,19 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td class="align-middle">2</td>
-                                                <td class="align-middle">3</td>
-                                                <td class="align-middle">3</td>
-                                                <td class="align-middle">5</td>
-                                                <td class="align-middle">100 Meter</td>
-                                                <td><a href="">FILE IJAZAH</a><br>
-                                                    <a href="">FILE KK</a><br>
-                                                    <a href="">FILE KIP</a></td>
+                                            <?php foreach( $data['Afirmasi'] as $formulir) :?>
+                                                <tr>
+                                                <td class="align-middle"><?=$formulir['USERNAME'];?></td>
+                                                <td class="align-middle"><?=$formulir['NISN'];?></td>
+                                                <td class="align-middle"><?=$formulir['NILAIUN'];?></td>
+                                                <td>L</td>
+                                                <td class="align-middle"><?=$formulir['JARAKALAMAT'];?></td>
+                                                <td><a href="<?= BASEURL; ?>/File/Berkas/<?= "IJAZAH_".$formulir['NISN'].".pdf"?>">FILE IJAZAH</a><br>
+                                                    <a href="<?= BASEURL; ?>/File/Berkas/<?="KK_".$formulir['NISN'].".pdf"?>">FILE KK</a><br>
+                                                    <a href="<?= BASEURL; ?>/File/Berkas/<?="KIP_".$formulir['NISN'].".pdf"?>">FILE KIP</a></td>
                                                 <th class="text-center align-middle"> <a href="#verifikasiAfirmasi" data-toggle="modal" class="btn btn-success ml-2 verif" data-id="<?=$formulir['NOPENDAFTARAN'];?>">Verifikasi</i></th>
                                             </tr>
+                                            <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -104,17 +106,19 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td class="align-middle">2</td>
-                                                <td class="align-middle">3</td>
-                                                <td class="align-middle">3</td>
-                                                <td class="align-middle">5</td>
-                                                <td class="align-middle">100 Meter</td>
-                                                <td><a href="">FILE IJAZAH</a><br>
-                                                    <a href="">FILE KK</a>
-                                                    <a href="">FILE PRESTASI</a></td>
-                                                <th class="text-center align-middle"> <a href="#verifikasiPrestasi" data-toggle="modal" class="btn btn-success ml-2 verif" data-id="<?=$formulir['NOPENDAFTARAN'];?>">Verifikasi</i></th>
+                                            <?php foreach( $data['Prestasi'] as $formulir) :?>
+                                                <tr>
+                                                <td class="align-middle"><?=$formulir['USERNAME'];?></td>
+                                                <td class="align-middle"><?=$formulir['NISN'];?></td>
+                                                <td class="align-middle"><?=$formulir['NILAIUN'];?></td>
+                                                <td>L</td>
+                                                <td class="align-middle"><?=$formulir['JARAKALAMAT'];?></td>
+                                                <td><a href="<?= BASEURL; ?>/File/Berkas/<?= "IJAZAH_".$formulir['NISN'].".pdf"?>">FILE IJAZAH</a><br>
+                                                    <a href="<?= BASEURL; ?>/File/Berkas/<?="KK_".$formulir['NISN'].".pdf"?>">FILE KK</a><br>
+                                                    <a href="<?= BASEURL; ?>/File/Berkas/<?="PRESTASI_".$formulir['NISN'].".pdf"?>">FILE PRESTASI</a></td>
+                                                <th class="text-center align-middle"> <a href="#verifikasiAfirmasi" data-toggle="modal" class="btn btn-success ml-2 verif" data-id="<?=$formulir['NOPENDAFTARAN'];?>">Verifikasi</i></th>
                                             </tr>
+                                            <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>

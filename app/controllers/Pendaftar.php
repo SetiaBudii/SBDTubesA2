@@ -8,7 +8,7 @@ class Pendaftar extends Controller{
         $this->view('templates/footer');
     }
     public function biodata(){
-        $data['button'] = $this->model('Pendaftar_model')->buttonFormulir('1');
+        $data['button'] = $this->model('Pendaftar_model')->buttonFormulir($_SESSION['id']);
         $data['judul'] = 'Biodata';
         $this->view('templates/headerPendaftar',$data);
         $this->view('pendaftar/biodata',$data);
@@ -61,6 +61,20 @@ class Pendaftar extends Controller{
         }else{
             Flasher::setFlash('gagal','dibuat','danger');
             header('Location:'. BASEURL .'/pendaftar/formulir');
+            exit;
+        }
+    }
+
+    public function tambahBerkas(){
+        // echo var_dump($_FILES['files']);
+
+        if ($this->model('Pendaftar_model')->uploadBerkas($_FILES) > 0 ){
+            header('Location:'. BASEURL .'/pendaftar/berkas');
+            unset($_FILES);
+            exit;
+        }else{
+            header('Location:'. BASEURL .'/pendaftar/berkas');
+            unset($_FILES);
             exit;
         }
     }

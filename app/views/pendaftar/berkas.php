@@ -1,4 +1,4 @@
-    <!-- Begin Alert -->
+   <!-- Begin Alert -->
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>Perhatikan!</strong> Inputkan File Sesuai Dengan Tempatnya !
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -6,7 +6,7 @@
                 </button>
                 </div>
     <!-- End Alert -->
-
+    
      <!-- Page Heading -->
      <div class="container-fluid">
      <div class="col d-sm-flex align-items-center justify-content-between mb-0">
@@ -17,30 +17,30 @@
     <!-- Content Row -->
 
     <!-- Begin Input File -->
-    <form class="mt-5 mb-4" action="<?= BASEURL; ?>/admin/tambahBerita">
+    <form class="mt-5 mb-4" action="<?= BASEURL; ?>/pendaftar/tambahBerkas" method="post" enctype="multipart/form-data">
        <div class="row">
                 <div class="form-group mt-4">
                     <div class="col">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFileLang" lang="in">
+                                <input type="file" class="custom-file-input" id="uploadKK"  name="uploadKK" lang="in">
                                 <label class="custom-file-label" for="customFileLang">Kartu Keluarga (KK) </label>
                             </div>
                     </div><br>
                     <div class="col">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFileLang" lang="in">
+                                <input type="file" class="custom-file-input" id="uploadIjazah"  name="uploadIjazah" lang="in">
                                 <label class="custom-file-label" for="customFileLang">Ijazah STLA/Sederajat </label>
                             </div>
                     </div><br>
                     <div class="col">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFileLang" lang="in">
+                                <input type="file" class="custom-file-input" id="uploadKip"  name="uploadKip" lang="in">
                                 <label class="custom-file-label" for="customFileLang">Kartu Indonesia Pintar (KIP) </label>
                             </div>
                     </div><br>
                     <div class="col">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFileLang" lang="in">
+                                <input type="file" class="custom-file-input" id="uploadPrestasi"  name="uploadPrestasi" lang="in">
                                 <label class="custom-file-label" for="customFileLang">Piagam Prestasi/Organisasi </label>
                             </div>
                     </div><br>

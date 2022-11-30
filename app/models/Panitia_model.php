@@ -169,6 +169,28 @@ class Panitia_model
     return $this->db->resultSet();
   }
 
+  public function manajemenAfirmasi(){
+    $this->db->query("SELECT ACCOUNT.USERNAME, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, PENDAFTAR.NILAIUN, PENDAFTAR.JARAKALAMAT
+                      FROM FORMULIR JOIN PENDAFTAR 
+                         ON FORMULIR.NISN = PENDAFTAR.NISN
+                                JOIN ACCOUNT
+                                    ON ACCOUNT.USERID = PENDAFTAR.USERID
+                      WHERE FORMULIR.JALURSELEKSI = '2' ");
+    $this->db->execute();
+    return $this->db->resultSet();
+  }
+
+  public function manajemenPrestasi(){
+    $this->db->query("SELECT ACCOUNT.USERNAME, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, PENDAFTAR.NILAIUN, PENDAFTAR.JARAKALAMAT
+                      FROM FORMULIR JOIN PENDAFTAR 
+                         ON FORMULIR.NISN = PENDAFTAR.NISN
+                                JOIN ACCOUNT
+                                    ON ACCOUNT.USERID = PENDAFTAR.USERID
+                      WHERE FORMULIR.JALURSELEKSI = '1' ");
+    $this->db->execute();
+    return $this->db->resultSet();
+  }
+
   public function StatusSeleksi($char){ //function parameters, two variables.
     if($char == "5"){
          return "Terverifikasi";
