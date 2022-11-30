@@ -17,28 +17,38 @@
     <!-- Content Row -->
 
     <!-- Begin Input File -->
-    <form class="mt-5 mb-4">
-                        <div class="form-row">
-                        <div class="form-group mt-4">
+    <form class="mt-5 mb-4" action="<?= BASEURL; ?>/admin/tambahBerita">
+       <div class="row">
+                <div class="form-group mt-4">
+                    <div class="col">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="customFileLang" lang="in">
                                 <label class="custom-file-label" for="customFileLang">Kartu Keluarga (KK) </label>
-                            </div><br><br>
+                            </div>
+                    </div><br>
+                    <div class="col">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="customFileLang" lang="in">
                                 <label class="custom-file-label" for="customFileLang">Ijazah STLA/Sederajat </label>
-                            </div><br><br>
+                            </div>
+                    </div><br>
+                    <div class="col">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="customFileLang" lang="in">
                                 <label class="custom-file-label" for="customFileLang">Kartu Indonesia Pintar (KIP) </label>
-                            </div><br><br>
+                            </div>
+                    </div><br>
+                    <div class="col">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="customFileLang" lang="in">
                                 <label class="custom-file-label" for="customFileLang">Piagam Prestasi/Organisasi </label>
-                            </div><br><br>
+                            </div>
+                    </div><br>
+                </div>
+        </div>
+                        <div class="text-center mt-2 row">
+                        <div class="col-4"> <button type="submit" class="btn btn-primary text-center">Submit</button></div></div>        
                         </div>
-                        <div class="text-left mt-2"><br><br><br><br><br><br><br><br><br><br><br>
-                        <button type="submit" class="btn btn-primary text-left">Submit</button></div>
                         </form>
     <!-- End Input File -->
 </div>

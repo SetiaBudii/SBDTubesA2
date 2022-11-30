@@ -1,5 +1,11 @@
 <!-- Begin Page Content -->
             
+
+<?php
+// Return current date from the remote server
+$date = date("j - n - Y"); 
+?>
+
 <div class="container-fluid">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 text-center">
@@ -7,9 +13,10 @@
                         </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                        <table class="table table-striped table-bordered small" id="tableAdmin" cellspacing="0">
+                                        <table class="table table-striped table-bordered small" id="table1" cellspacing="0">
                                             <thead>
                                                 <tr>
+                                                    <th scope="col">ID BERITA</th>
                                                     <th scope="col">PEMBUAT</th>
                                                     <th scope="col">JUDUL BERITA</th>
                                                     <th scope="col">TANGGAL TERBIT</th>
@@ -19,11 +26,12 @@
                                             <tbody>
                                             <?php foreach( $data['berita'] as $list) :?>
                                                 <tr>
+                                                <td><?=$list['ID'];?></td>
                                                 <td><?=$list['USERNAME'];?></td>
                                                 <td><?=$list['JUDUL'];?></td>
                                                 <td><?=$list['TGLUPLOAD'];?></td>
                                                 <td><a href=" <?= BASEURL; ?>/File/Berita/<?=$list['ID'] . ".pdf"?>">Download File</a></td>
-                                            </tr>
+                                                </tr>
                                             <?php endforeach; ?>
                                             </tbody>
                                         </table>
@@ -39,6 +47,7 @@
 
 </div>
 <!-- End of Page Wrapper -->
+
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">

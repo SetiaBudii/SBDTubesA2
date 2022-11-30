@@ -17,11 +17,11 @@
                     <div class="row mb-4"><div class="col-sm-12"><b><h7>Masukan Data Sesuai Dengan Data Diri !</h7></b></div>
                            </div>
                 <!-- Content Row -->
-                <form>
+                <form action="<?= BASEURL; ?>/pendaftar/updateBiodata" method="post">
                     <div class="row mb-3">
                         <div class="col">
                         <label for="exampleInputEmail1">Nama Lengkap</label>
-                        <input type="text" class="form-control" placeholder="Nama Lengkap">
+                        <input type="text" class="form-control" id="NamaLengkap" name="NamaLengkap" placeholder="Nama Lengkap">
                         </div>
                         <div class="col">
                         <label for="exampleInputEmail1">Asal STLP</label>
@@ -34,24 +34,24 @@
                         <input type="text" class="form-control" placeholder="No. Induk Kependudukan (NIK)">
                         </div>
                         <div class="col">
-                        <label for="exampleInputEmail1">Jumlah Nilai UN</label>
-                        <input type="text" class="form-control" placeholder="Jumlah Nilai UN">
+                        <label for="exampleInputEmail1">Nilai UN</label>
+                        <input type="text" class="form-control" id="UN" name="UN" placeholder="Jumlah Nilai UN">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
                         <label for="exampleInputEmail1">NISN</label>
-                        <input type="text" class="form-control" placeholder="NISN">
+                        <input type="text" class="form-control" id="NISN" name="NISN" placeholder="NISN">
                         </div>
                         <div class="col">
                         <label for="exampleInputEmail1">Alamat</label>
-                        <input type="text" class="form-control" placeholder="Alamat">
+                        <input type="text" class="form-control" id="AlamatLengkap" name="AlamatLengkap" placeholder="Alamat">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                        <label for="exampleInputEmail1">Jurusan</label>
-                        <input type="text" class="form-control" placeholder="Jurusan">
+                        <label for="exampleInputEmail1">Jarak ke sekolah tujuan</label>
+                        <input type="text" class="form-control" id="Jarak" name="Jarak" placeholder="Jarak">
                         </div>
                         <div class="col">
                         <label for="exampleInputEmail1">Desa/Kelurahan</label>
@@ -71,7 +71,7 @@
                     <div class="row mb-3">
                         <div class="col">
                         <label for="exampleInputEmail1">Tanggal Lahir</label>
-                        <input type="text" class="form-control" placeholder="Tanggal Lahir">
+                        <input type="date" class="form-control" id="TanggalLahir" name="TanggalLahir" placeholder="Tanggal Lahir">
                         </div>
                         <div class="col">
                         <label for="exampleInputEmail1">Kab./Kota</label>
@@ -81,7 +81,7 @@
                     <div class="row mb-3">
                         <div class="col">
                         <label for="exampleInputEmail1">Jenis Kelamin</label>
-                        <input type="text" class="form-control" placeholder="Jenis Kelamin">
+                        <input type="text" class="form-control" id="JenisKelamin" name="JenisKelamin" placeholder="Jenis Kelamin">
                         </div>
                         <div class="col">
                         <label for="exampleInputEmail1">Kode Pos</label>
@@ -94,21 +94,12 @@
                         <input type="text" class="form-control" placeholder="Agama">
                         </div>
                         <div class="col">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="text" class="form-control" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col">
                         <label for="exampleInputEmail1">No. HP</label>
-                        <input type="text" class="form-control" placeholder="No. HP">
-                        </div>
-                        <div class="col">
-                        <label for="exampleInputEmail1">Password</label>
-                        <input type="text" class="form-control" placeholder="Password">
+                        <input type="text" class="form-control" placeholder="No. HP" disabled>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary">Submit</button>
+                    <?= $data['button'] ?>
+                    <!-- <button type="button" class="btn btn-primary">Submit</button> -->
                 </form>
             <!-- /.container-fluid -->
         </div>

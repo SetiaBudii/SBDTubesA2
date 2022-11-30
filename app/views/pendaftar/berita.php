@@ -5,6 +5,7 @@
 // Return current date from the remote server
 $date = date("j - n - Y"); 
 ?>
+
 <div class="container-fluid">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 text-center">
@@ -16,104 +17,22 @@ $date = date("j - n - Y");
                                             <thead>
                                                 <tr>
                                                     <th scope="col">ID BERITA</th>
+                                                    <th scope="col">PEMBUAT</th>
                                                     <th scope="col">JUDUL BERITA</th>
                                                     <th scope="col">TANGGAL TERBIT</th>
                                                     <th scope="col">FILE DOKUMEN</th>
-                                                    <th scope="col">ACTION</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <th> <a href="#deleteEmployeeModal" data-toggle="modal" class="btn btn-danger  ml-2"><i class="fas fa-trash"> Delete</i></th>
-                                            </tr>
+                                            <?php foreach( $data['berita'] as $list) :?>
+                                                <tr>
+                                                <td><?=$list['ID'];?></td>
+                                                <td><?=$list['USERNAME'];?></td>
+                                                <td><?=$list['JUDUL'];?></td>
+                                                <td><?=$list['TGLUPLOAD'];?></td>
+                                                <td><a href=" <?= BASEURL; ?>/File/Berita/<?=$list['ID'] . ".pdf"?>">Download File</a></td>
+                                                </tr>
+                                            <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -128,6 +47,7 @@ $date = date("j - n - Y");
 
 </div>
 <!-- End of Page Wrapper -->
+
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">

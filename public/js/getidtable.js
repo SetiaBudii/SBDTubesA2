@@ -20,3 +20,4 @@ $(document).on("click", ".editAkun", function () {
     console.log(userId);
     $(".modal-body #noPendaftaran").val( userId );
   });
+  
