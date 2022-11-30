@@ -3,37 +3,65 @@
 class Pendaftar extends Controller{
     public function index(){
         $data['judul'] = 'Home';
-        $this->view('templates/header',$data);
+        $this->view('templates/headerPendaftar',$data);
         $this->view('pendaftar/dashboard',$data);
         $this->view('templates/footer');
     }
     public function biodata(){
-        $this->view('templates/headerPendaftar');
-        $this->view('pendaftar/biodata');
+        $data['button'] = $this->model('Pendaftar_model')->buttonFormulir('1');
+        $data['judul'] = 'Biodata';
+        $this->view('templates/headerPendaftar',$data);
+        $this->view('pendaftar/biodata',$data);
         $this->view('templates/footer');
     }
 
     public function berkas(){
-        $this->view('templates/headerPendaftar');
-        $this->view('pendaftar/berkas');
+        $data['judul'] = 'Berkas';
+        $this->view('templates/headerPendaftar',$data);
+        $this->view('pendaftar/berkas',$data);
         $this->view('templates/footer');
     }
 
     public function formulir(){
-        $this->view('templates/headerPendaftar');
-        $this->view('pendaftar/formulir');
+        $data['judul'] = 'Formulir';
+        $this->view('templates/headerPendaftar',$data);
+        $this->view('pendaftar/formulir',$data);
         $this->view('templates/footer');
     }
-
+    
     public function berita(){
-        $this->view('templates/headerPendaftar');
-        $this->view('pendaftar/berita');
-        $this->view('templates/footer');
+        $data['judul'] = 'Berita';
+        $data['berita'] = $this->model('Admin_model')->getListBerita();
+        $this->view('templates/headerPendaftar',$data);
+        $this->view('pendaftar/berita',$data);
+        $this->view('templates/footer',$data);
     }
 
     public function logOut(){
-
+        unset($_SESSION['username']);
+        unset($_SESSION['role']);
+        unset($_SESSION['name']);
+        unset($_SESSION['id']);
         header('Location:'. BASEURL .'/home/index');
         exit;
       }
+
+    public function updateBiodata(){
+        if ($this->model('Pendaftar_model')->updateBiodataPendaftar($_POST) > 0 ){
+            header('Location:'. BASEURL .'/pendaftar/biodata');
+            exit;
+        }
+    }
+
+    public function insertFormulir(){
+        if ($this->model('Pendaftar_model')->tambahFormulir($_POST) > 0 ){
+            Flasher::setFlash('berhasil','dibuat','success');
+            header('Location:'. BASEURL .'/pendaftar/formulir');
+            exit;
+        }else{
+            Flasher::setFlash('gagal','dibuat','danger');
+            header('Location:'. BASEURL .'/pendaftar/formulir');
+            exit;
+        }
+    }
 }
