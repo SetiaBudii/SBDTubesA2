@@ -47,9 +47,9 @@
 					</div>
 					<div class="signup-image">
 						<figure>
-							<img src="<?=BASEURL; ?>/images/REG.png" alt="sing up image">
+							<img src="<?=BASEURL; ?>/img/resume.png" alt="sing up image" width="300" height="300">
 						</figure>
-						<a href="<?=BASEURL; ?>/home/login" class="signup-image-link">Sudah Memiliki Akun?</a>
+						<a href="<?=BASEURL; ?>/home/login" class="signup-image-link"><u>Sudah Memiliki Akun?</u></a>
 					</div>
 				</div>
 			</div>

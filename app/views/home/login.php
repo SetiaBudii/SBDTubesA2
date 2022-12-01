@@ -12,7 +12,7 @@
 						<figure>
 							<img src="<?=BASEURL; ?>/img/siswa.jpg" alt="sing up image">
 						</figure>
-						<a href="<?=BASEURL; ?>/home/register" class="signup-image-link">Buat Akun</a>
+						<a href="<?=BASEURL; ?>/home/register" class="signup-image-link"><u>Buat Akun</u></a>
 					</div>
 
 					<div class="signin-form">

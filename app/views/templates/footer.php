@@ -64,6 +64,72 @@
     },
   });
 </script>
+
+<script>
+    var ctx = document.getElementById("myJalur");
+    var myJalur = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ["Zonasi", "Afirmasi", "Prestasi"],
+        datasets: [{
+        data: [<?= $data['Zonasi'];?>, <?= $data['Afirmasi'];?>, <?= $data['Prestasi'];?>],
+        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+        hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+        hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+    },
+    options: {
+        maintainAspectRatio: false,
+        tooltips: {
+        backgroundColor: "rgb(255,255,255)",
+        bodyFontColor: "#858796",
+        borderColor: '#dddfeb',
+        borderWidth: 1,
+        xPadding: 15,
+        yPadding: 15,
+        displayColors: false,
+        caretPadding: 10,
+        },
+        legend: {
+        display: false
+        },
+        cutoutPercentage: 80,
+    },
+  });
+</script>
+
+<script>
+    var ctx = document.getElementById("myFile");
+    var myFile = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ["Pendaftar Sudah Diverifikasi","Berkas kurang/tidaksesuai"],
+        datasets: [{
+        data: [<?= $data['Verif']['TOTAL'];?>, <?= $data['NonVerif']['TOTAL'];?>],
+        backgroundColor: ['#1cc88a', '#dc3545'],
+        hoverBackgroundColor: ['#17a673', '#B70718'],
+        hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+    },
+    options: {
+        maintainAspectRatio: false,
+        tooltips: {
+        backgroundColor: "rgb(255,255,255)",
+        bodyFontColor: "#858796",
+        borderColor: '#dddfeb',
+        borderWidth: 1,
+        xPadding: 15,
+        yPadding: 15,
+        displayColors: false,
+        caretPadding: 10,
+        },
+        legend: {
+        display: false
+        },
+        cutoutPercentage: 80,
+    },
+  });
+</script>
 <!-- Core plugin JavaScript-->
 </body>
 </html>

@@ -8,7 +8,7 @@ class Pendaftar extends Controller{
         $this->view('templates/footer');
     }
     public function biodata(){
-        $data['button'] = $this->model('Pendaftar_model')->buttonFormulir($_SESSION['id']);
+        $data['button'] = $this->model('Pendaftar_model')->buttonBiodata($_SESSION['id']);
         $data['judul'] = 'Biodata';
         $this->view('templates/headerPendaftar',$data);
         $this->view('pendaftar/biodata',$data);
@@ -24,6 +24,7 @@ class Pendaftar extends Controller{
 
     public function formulir(){
         $data['judul'] = 'Formulir';
+        $data['button'] = $this->model('Pendaftar_model')->buttonFormulir($_SESSION['form']);
         $this->view('templates/headerPendaftar',$data);
         $this->view('pendaftar/formulir',$data);
         $this->view('templates/footer');
@@ -42,6 +43,7 @@ class Pendaftar extends Controller{
         unset($_SESSION['role']);
         unset($_SESSION['name']);
         unset($_SESSION['id']);
+        unset($_SESSION['form']);
         header('Location:'. BASEURL .'/home/index');
         exit;
       }
@@ -55,11 +57,10 @@ class Pendaftar extends Controller{
 
     public function insertFormulir(){
         if ($this->model('Pendaftar_model')->tambahFormulir($_POST) > 0 ){
-            Flasher::setFlash('berhasil','dibuat','success');
+            $_SESSION['form'] = 'Y';
             header('Location:'. BASEURL .'/pendaftar/formulir');
             exit;
         }else{
-            Flasher::setFlash('gagal','dibuat','danger');
             header('Location:'. BASEURL .'/pendaftar/formulir');
             exit;
         }

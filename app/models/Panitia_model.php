@@ -9,7 +9,7 @@ class Panitia_model
   }
 
   public function seleksiZonasi(){
-    $this->db->query("SELECT ACCOUNT.USERNAME, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, SELEKSI.STATUSSELEKSI
+    $this->db->query("SELECT ACCOUNT.NAME, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, SELEKSI.STATUSSELEKSI
                       FROM FORMULIR JOIN PENDAFTAR 
                          ON FORMULIR.NISN = PENDAFTAR.NISN
                                 JOIN ACCOUNT
@@ -22,7 +22,7 @@ class Panitia_model
   }
 
   public function seleksiAfirmasi(){
-    $this->db->query("SELECT ACCOUNT.USERNAME, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, SELEKSI.STATUSSELEKSI
+    $this->db->query("SELECT ACCOUNT.NAME, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, SELEKSI.STATUSSELEKSI
                       FROM FORMULIR JOIN PENDAFTAR 
                            ON FORMULIR.NISN = PENDAFTAR.NISN
                                 JOIN ACCOUNT
@@ -35,7 +35,7 @@ class Panitia_model
   }
 
   public function seleksiPrestasi(){
-    $this->db->query("SELECT ACCOUNT.USERNAME, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, SELEKSI.STATUSSELEKSI
+    $this->db->query("SELECT ACCOUNT.NAME, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, SELEKSI.STATUSSELEKSI
                         FROM FORMULIR JOIN PENDAFTAR 
                              ON FORMULIR.NISN = PENDAFTAR.NISN
                                 JOIN ACCOUNT
@@ -159,7 +159,7 @@ class Panitia_model
   }
 
   public function manajemenZonasi(){
-    $this->db->query("SELECT ACCOUNT.USERNAME, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, PENDAFTAR.NILAIUN, PENDAFTAR.JARAKALAMAT
+    $this->db->query("SELECT ACCOUNT.NAME, PENDAFTAR.JENISKELAMIN, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, PENDAFTAR.NILAIUN, PENDAFTAR.JARAKALAMAT
                       FROM FORMULIR JOIN PENDAFTAR 
                          ON FORMULIR.NISN = PENDAFTAR.NISN
                                 JOIN ACCOUNT
@@ -170,7 +170,7 @@ class Panitia_model
   }
 
   public function manajemenAfirmasi(){
-    $this->db->query("SELECT ACCOUNT.USERNAME, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, PENDAFTAR.NILAIUN, PENDAFTAR.JARAKALAMAT
+    $this->db->query("SELECT ACCOUNT.NAME, PENDAFTAR.JENISKELAMIN, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, PENDAFTAR.NILAIUN, PENDAFTAR.JARAKALAMAT
                       FROM FORMULIR JOIN PENDAFTAR 
                          ON FORMULIR.NISN = PENDAFTAR.NISN
                                 JOIN ACCOUNT
@@ -181,12 +181,12 @@ class Panitia_model
   }
 
   public function manajemenPrestasi(){
-    $this->db->query("SELECT ACCOUNT.USERNAME, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, PENDAFTAR.NILAIUN, PENDAFTAR.JARAKALAMAT
+    $this->db->query("SELECT ACCOUNT.NAME, PENDAFTAR.JENISKELAMIN, FORMULIR.NOPENDAFTARAN, FORMULIR.NISN, PENDAFTAR.NILAIUN, PENDAFTAR.JARAKALAMAT
                       FROM FORMULIR JOIN PENDAFTAR 
                          ON FORMULIR.NISN = PENDAFTAR.NISN
                                 JOIN ACCOUNT
                                     ON ACCOUNT.USERID = PENDAFTAR.USERID
-                      WHERE FORMULIR.JALURSELEKSI = '1' ");
+                      WHERE FORMULIR.JALURSELEKSI = '3' ");
     $this->db->execute();
     return $this->db->resultSet();
   }
@@ -197,5 +197,27 @@ class Panitia_model
     }else{
         return "Tidak/belum Terverifikasi";
     }
+  }
+
+  public function getJK($char){ //function parameters, two variables.
+    if($char == "L"){
+         return "Laki-Laki";
+    }else{
+        return "Perempuan";
+    }
+  }
+
+  public function getTotalVerif(){
+    $query = "SELECT COUNT(NOPENDAFTARAN) AS TOTAL FROM SELEKSI WHERE STATUSSELEKSI = '5' ";
+    $this->db->query($query);
+    $this->db->execute();
+    return $this->db->single();
+  }
+
+  public function getTotalNonVerif(){
+    $query = "SELECT COUNT(NOPENDAFTARAN) AS TOTAL FROM SELEKSI WHERE STATUSSELEKSI != '5' ";
+    $this->db->query($query);
+    $this->db->execute();
+    return $this->db->single();
   }
 }

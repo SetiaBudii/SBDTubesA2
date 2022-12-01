@@ -16,12 +16,10 @@
                     <div class="col mr-2">
                         <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">
                             Zonasi</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800"><?= $data['Zonasi'] ?></div>
-                        <hr class="sidebar-divider my-0"></hr><!--buat bikin biar ada kuota-->
-                        <div class="h7 mb-0 font-weight-bold text-gray-800">kuota : 200</div> <!--untuk ubah ukuran font-->
-                    </div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800"><?= $data['Zonasi']?> Pendaftar</div>
+                        <hr class="sidebar-divider my-0"></hr><!--buat bikin biar ada kuota--></div>
                     <div class="col-auto">
-                        <i class="fas fa-map-marked-alt fa-2x text-gray-300"></i> <!--buat ganti gambar-->
+                        <i class="fas fa-map-marked-alt fa-2x text-gray-900"></i> <!--buat ganti gambar-->
                     </div>
                 </div>
             </div>
@@ -36,12 +34,12 @@
                     <div class="col mr-2">
                         <div class="text-sm font-weight-bold text-success text-uppercase mb-1">
                             Prestasi</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800"><?= $data['Afirmasi'] ?></div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800"><?= $data['Afirmasi'] ?> Pendaftar</div>
                         <hr class="sidebar-divider my-0">
-                        <div class="h7 mb-0 font-weight-bold text-gray-800"> kuota : 200</div>
+                        
                     </div>
                     <div class="col-auto">
-                        <i class="  fas fa-user-graduate fa-2x text-gray-300"></i>
+                        <i class="  fas fa-user-graduate fa-2x text-gray-900"></i>
                     </div>
                 </div>
             </div>
@@ -55,12 +53,12 @@
                     <div class="col mr-2">
                         <div class="text-sm font-weight-bold text-success text-uppercase mb-1">
                             Afirmasi</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800"><?= $data['Prestasi'] ?></div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800"><?= $data['Prestasi'] ?> Pendaftar</div>
                         <hr class="sidebar-divider my-0">
-                        <div class="h7 mb-0 font-weight-bold text-gray-800"> kuota : 200</div>
+                        
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-id-card fa-2x text-gray-300"></i>
+                        <i class="fas fa-id-card fa-2x text-gray-900"></i>
                     </div>
                 </div>
             </div>
@@ -74,13 +72,13 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-sm font-weight-bold text-success text-uppercase mb-1">
-                            Total Pendaftar</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800"><?= $data['semua']['TOTAL'] ?></div>
+                            Total</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800"><?= $data['semua']['TOTAL'] ?> Pendaftar</div>
                         <hr class="sidebar-divider my-0">
-                        <div class="h7 mb-0 font-weight-bold text-gray-800"> kuota : 200</div>
+                        
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                        <i class="fas fa-users fa-2x text-gray-900"></i>
                     </div>
                 </div>
             </div>
@@ -95,10 +93,10 @@
                     <div class="col mr-2">
                         <div class="text-sm font-weight-bold text-success text-uppercase mb-1">
                             Pendaftar sudah diverifikasi</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800">Jumlah : 10</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">Jumlah : <?= $data['Verif']['TOTAL'] ?></div>
                     </div>
                     <div class="col-auto">
-                        <i class="fa fa-user-check fa-2x text-gray-300"></i>
+                        <i class="fa fa-user-check fa-2x text-gray-900"></i>
                     </div>
                 </div>
             </div>
@@ -112,10 +110,10 @@
                     <div class="col mr-2">
                         <div class="text-sm font-weight-bold text-success text-uppercase mb-1">
                             Berkas kurang/tidak sesuai</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800">Jumlah : 10</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">Jumlah : <?= $data['NonVerif']['TOTAL']?></div>
                     </div>
                     <div class="col-auto">
-                        <i class="fa fa-file fa-2x text-gray-300"></i>
+                        <i class="fas fa-file-excel fa-2x text-gray-900"></i>
                     </div>
                 </div>
             </div>
@@ -125,7 +123,9 @@
 </div>
 
 <!-- Content Row -->
-
+<br>
+<hr>
+<br>
 <div class="row">
     <!-- Pie Chart -->
     <div class="col-xl-12 col-lg-5">
@@ -151,17 +151,17 @@
             <!-- Card Body -->
             <div class="card-body">
                 <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myAkun"></canvas>
+                    <canvas id="myJalur"></canvas>
                 </div>
                 <div class="mt-4 text-center small">
                     <span class="mr-2">
                         <i class="fas fa-circle text-primary"></i> Zonasi
                     </span>
                     <span class="mr-2">
-                        <i class="fas fa-circle text-success"></i> Prestasi
+                        <i class="fas fa-circle text-success"></i> Afirmasi
                     </span>
                     <span class="mr-2">
-                        <i class="fas fa-circle text-info"></i> Afirmasi
+                        <i class="fas fa-circle text-info"></i> Prestasi
                     </span>
                 </div>
             </div>
@@ -194,12 +194,9 @@
             <!-- Card Body -->
             <div class="card-body">
                 <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myAkun"></canvas>
+                    <canvas id="myFile"></canvas>
                 </div>
                 <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-dark"></i> Pendaftar Baru
-                    </span>
                     <span class="mr-2">
                         <i class="fas fa-circle text-success"></i> Pendaftar Sudah Diverifikasi
                     </span>

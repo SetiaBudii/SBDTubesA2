@@ -30,7 +30,7 @@ class Pendaftar_model
         return $this->db->rowCount();
     }
 
-      public function buttonFormulir($data){
+      public function buttonBiodata($data){
         $nisn = $this->getNisn($data);
         if($nisn != $data){
         return '
@@ -38,6 +38,24 @@ class Pendaftar_model
                     <div class= "col-4">
                       <div class="alert alert-danger" role="alert">
                         Mohon Maaf, anda sudah pernah mengisi biodata. Untuk mengubah data diri anda mohon hubungi admin!
+                      </div>
+                    </div>
+                  </div>';
+                    
+        }else{
+          return '<button type="submit" class="btn btn-primary">Submit</button>';
+        }
+      }
+
+
+      public function buttonFormulir($data){
+        $tot = $this->getTotalFormulir();
+        if($tot["TOTAL"] > 0){
+        return '
+                  <div class = "row>
+                    <div class= "col-4">
+                      <div class="alert alert-danger" role="alert">
+                        Mohon Maaf, anda sudah pernah mengisi formulir. Formulir hanya bisa diisi satu kali saja!
                       </div>
                     </div>
                   </div>';
@@ -100,6 +118,15 @@ class Pendaftar_model
         $success = 1;
       }
       return $success;
+  }
+
+  public function getTotalFormulir(){
+    $nisnn = $this->getNisn($_SESSION['id']);
+    $query = "SELECT COUNT(NISN) AS TOTAL FROM FORMULIR WHERE NISN = :nis";
+    $this->db->query($query);
+    $this->db->bind('nis',$nisnn);
+    $this->db->execute();
+    return $this->db->single();
   }
 
   public function getJenisJalur($data){

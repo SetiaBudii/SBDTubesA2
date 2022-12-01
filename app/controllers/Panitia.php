@@ -19,13 +19,15 @@ class Panitia extends Controller{
 
     public function dashboard(){
         $data['judul'] = 'Dashboard';
+        $data['Verif'] = $this->model('Panitia_model')->getTotalVerif();
+        $data['NonVerif'] = $this->model('Panitia_model')->getTotalNonVerif();
         $data['Afirmasi'] = $this->model('Panitia_model')->getTotalJalur('2');
         $data['Zonasi'] = $this->model('Panitia_model')->getTotalJalur('1');
         $data['Prestasi'] = $this->model('Panitia_model')->getTotalJalur('3');
         $data['semua'] = $this->model('Admin_model')->getTotalPendaftar();
         $this->view('templates/headerPanitia',$data);
         $this->view('panitia/dashboardPanitia',$data);
-        $this->view('templates/footer');
+        $this->view('templates/footer',$data);
     }
 
     public function ManajemenData(){

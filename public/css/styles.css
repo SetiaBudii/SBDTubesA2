@@ -450,8 +450,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     color: #fff;
     border-bottom: none;
     width: auto;
-    padding: 15px 39px;
-    border-radius: 5px;
+    border-radius: 1px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
@@ -459,7 +458,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     margin-top: 25px;
     cursor: pointer; }
     .form-submit:hover {
-      background: #4292dc; }
+      background: #2265a4; }
   
   #signin {
     margin-top: 16px; }
@@ -468,7 +467,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     font-size: 14px;
     color: #222;
     display: block;
-    text-align: center; }
+    text-align: center;
+    padding-right: 35px; }
   
   .term-service {
     font-size: 13px;
@@ -685,8 +685,15 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   .signin-image {
     margin-left: 110px;
     margin-right: 20px;
-    margin-top: 10px; }
+    margin-top: 30px; }
   
+    .sign-reg{
+      width: auto;
+      margin-left: 110px;
+      margin-right: 20px;
+      margin-top: 30px; 
+    }
+    
   @media screen and (max-width: 1200px) {
     .container {
       width: calc( 100% - 30px);
@@ -765,5 +772,6 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
       font-size: 10px;
       color: #fff;
     }
+   
   /*# sourceMappingURL=style.css.map */
   

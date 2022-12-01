@@ -39,10 +39,10 @@
                         <tbody>
                         <?php foreach( $data['seleksiZonasi'] as $account) :?>
                         <tr>
-                        <td class="fsize"><?=$account['USERNAME'];?></td>
+                        <td class="fsize"><?=$account['NAME'];?></td>
                         <td class="fsize"><?=$account['NOPENDAFTARAN'];?></td>
                         <td class="fsize"><?=$account['NISN'];?></td>
-                        <td class="fsize"><?= $this->model('Panitia_model')->StatusSeleksi($account['STATUSSELEKSI']) ?></td>
+                        <td class="fsize"><b><?= $this->model('Panitia_model')->StatusSeleksi($account['STATUSSELEKSI']) ?></b></td>
                         </tr>
                         <?php endforeach; ?>
                         </tbody>
@@ -70,10 +70,10 @@
                         <tbody>
                         <?php foreach( $data['seleksiAfirmasi'] as $account) :?>
                         <tr>
-                        <td class="fsize"><?=$account['USERNAME'];?></td>
+                        <td class="fsize"><?=$account['NAME'];?></td>
                         <td class="fsize"><?=$account['NOPENDAFTARAN'];?></td>
                         <td class="fsize"><?=$account['NISN'];?></td>
-                        <td class="fsize"><?= $this->model('Panitia_model')->StatusSeleksi($account['STATUSSELEKSI']) ?></td>
+                        <td class="fsize"><b><?= $this->model('Panitia_model')->StatusSeleksi($account['STATUSSELEKSI']) ?></b></td>
                         </tr>
                         <?php endforeach; ?>
                         </tbody>
@@ -101,10 +101,10 @@
                         <tbody>
                         <?php foreach( $data['seleksiPrestasi'] as $account) :?>
                         <tr>
-                        <td class="fsize"><?=$account['USERNAME'];?></td>
+                        <td class="fsize"><?=$account['NAME'];?></td>
                         <td class="fsize"><?=$account['NOPENDAFTARAN'];?></td>
                         <td class="fsize"><?=$account['NISN'];?></td>
-                        <td class="fsize"><?= $this->model('Panitia_model')->StatusSeleksi($account['STATUSSELEKSI']) ?></td>
+                        <td class="fsize"><b><?= $this->model('Panitia_model')->StatusSeleksi($account['STATUSSELEKSI']) ?></b></td>
                         </tr>
                         <?php endforeach; ?>
                         </tbody>

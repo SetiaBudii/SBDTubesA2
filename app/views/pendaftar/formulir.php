@@ -29,7 +29,7 @@ $datenow = date("Y-m-d");
         <div class="col">
             <label for="exampleInputEmail1">Nama Lengkap</label>
             <input type="date" hidden value="<?= $datenow ?>" id="formtanggal" name="formtanggal">
-            <input type="text" class="form-control" placeholder="Nama Lengkap" disabled>
+            <input type="text" class="form-control" placeholder="<?php echo $_SESSION['name']?>" disabled>
         </div>
     <div class="col">
     <label for="exampleInputEmail1">Jurusan</label>
@@ -52,9 +52,8 @@ $datenow = date("Y-m-d");
         </div>
     </div>
     <div class ="row mb-3">
-    <div class="col-6"></div>
-    <div class="col-6 text-right">
-        <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="col-12">
+        <?= $data['button'] ?>
 </div>
 </form>
 </div>

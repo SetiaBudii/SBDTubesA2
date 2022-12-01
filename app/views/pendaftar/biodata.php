@@ -21,7 +21,7 @@
                     <div class="row mb-3">
                         <div class="col">
                         <label for="exampleInputEmail1">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="NamaLengkap" name="NamaLengkap" placeholder="Nama Lengkap">
+                        <input type="text" class="form-control" id="NamaLengkap" name="NamaLengkap" placeholder="<?php echo $_SESSION['name']?>" disabled>
                         </div>
                         <div class="col">
                         <label for="exampleInputEmail1">Asal STLP</label>
@@ -31,7 +31,7 @@
                     <div class="row mb-3">
                         <div class="col">
                         <label for="exampleInputEmail1">No. Induk Kependudukan (NIK)</label>
-                        <input type="text" class="form-control" placeholder="No. Induk Kependudukan (NIK)">
+                        <input type="text" class="form-control" placeholder="No. Induk Kependudukan (NIK)" maxlength="16">
                         </div>
                         <div class="col">
                         <label for="exampleInputEmail1">Nilai UN</label>
@@ -41,7 +41,7 @@
                     <div class="row mb-3">
                         <div class="col">
                         <label for="exampleInputEmail1">NISN</label>
-                        <input type="text" class="form-control" id="NISN" name="NISN" placeholder="NISN">
+                        <input type="text" class="form-control" id="NISN" name="NISN" placeholder="NISN" minlength="10" maxlength="10">
                         </div>
                         <div class="col">
                         <label for="exampleInputEmail1">Alamat</label>
@@ -81,21 +81,14 @@
                     <div class="row mb-3">
                         <div class="col">
                         <label for="exampleInputEmail1">Jenis Kelamin</label>
-                        <input type="text" class="form-control" id="JenisKelamin" name="JenisKelamin" placeholder="Jenis Kelamin">
+                        <select class="form-control" id="JenisKelamin" name="JenisKelamin">
+                            <option value="L">Laki-Laki</option>
+                            <option value="P">Perempuan</option>
+                        </select>
                         </div>
                         <div class="col">
                         <label for="exampleInputEmail1">Kode Pos</label>
                         <input type="text" class="form-control" placeholder="Kode Pos">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col">
-                        <label for="exampleInputEmail1">Agama</label>
-                        <input type="text" class="form-control" placeholder="Agama">
-                        </div>
-                        <div class="col">
-                        <label for="exampleInputEmail1">No. HP</label>
-                        <input type="text" class="form-control" placeholder="No. HP" disabled>
                         </div>
                     </div>
                     <?= $data['button'] ?>

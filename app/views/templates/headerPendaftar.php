@@ -30,7 +30,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -83,7 +83,7 @@
 <div id="content">
 
     <!-- Topbar -->
-    <nav class="navbar navbar-expand navbar-light bg-dark topbar mb-4 static-top shadow">
+    <nav class="navbar navbar-expand navbar-light bg-primary topbar mb-4 static-top shadow">
             <div class="text-center">
                 <button type="button" class="btn-circle bg-transparent btn-outline-light" id="sidebarToggle"><i class="fas fa-grip-horizontal"></i></button>
             </div>
@@ -118,7 +118,7 @@
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-100 small">Nama Akun</span>
+                    <span class="mr-2 d-none d-lg-inline text-gray-100 small"><?php echo $_SESSION['name']?></span>
                     <img class="img-profile rounded-circle"
                         src="<?= BASEURL; ?>/img/undraw_profile.svg">
                 </a>
