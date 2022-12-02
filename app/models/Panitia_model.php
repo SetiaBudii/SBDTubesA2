@@ -191,7 +191,7 @@ class Panitia_model
     return $this->db->resultSet();
   }
 
-  public function StatusSeleksi($char){ //function parameters, two variables.
+  public function StatusSeleksi($char){ 
     if($char == "5"){
          return "Terverifikasi";
     }else{
@@ -199,7 +199,7 @@ class Panitia_model
     }
   }
 
-  public function getJK($char){ //function parameters, two variables.
+  public function getJK($char){ 
     if($char == "L"){
          return "Laki-Laki";
     }else{
