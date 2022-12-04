@@ -67,4 +67,14 @@ class Home extends Controller{
       header('Location:'. BASEURL .'/home/index');
       exit;
     }
+
+
+    public function pengumuman(){
+      $data['judul'] = 'Pengumuman';
+      $data['list'] = $this->model('Home_model')->lulus();
+      $this->view('templates/pengumuman',$data);
+      $this->view('home/pengumuman',$data);
+      $this->view('templates/footer');
+  }
+
 }

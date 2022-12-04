@@ -45,7 +45,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="<?= BASEURL; ?>/admin/dashboard">
+            <a class="nav-link" href="<?= BASEURL; ?>/pendaftar/index">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>

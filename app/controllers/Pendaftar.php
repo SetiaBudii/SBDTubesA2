@@ -50,7 +50,7 @@ class Pendaftar extends Controller{
 
     public function updateBiodata(){
         if ($this->model('Pendaftar_model')->updateBiodataPendaftar($_POST) > 0 ){
-            header('Location:'. BASEURL .'/pendaftar/biodata');
+            header('Location:'. BASEURL .'/pendaftar/index');
             exit;
         }
     }
@@ -58,10 +58,10 @@ class Pendaftar extends Controller{
     public function insertFormulir(){
         if ($this->model('Pendaftar_model')->tambahFormulir($_POST) > 0 ){
             $_SESSION['form'] = 'Y';
-            header('Location:'. BASEURL .'/pendaftar/formulir');
+            header('Location:'. BASEURL .'/pendaftar/index');
             exit;
         }else{
-            header('Location:'. BASEURL .'/pendaftar/formulir');
+            header('Location:'. BASEURL .'/pendaftar/index');
             exit;
         }
     }
@@ -79,4 +79,6 @@ class Pendaftar extends Controller{
             exit;
         }
     }
+
+    
 }

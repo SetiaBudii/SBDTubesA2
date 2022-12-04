@@ -109,6 +109,11 @@ class Home_model
     return $val;
   }
 
+  public function lulus(){
+    $this->db->query("SELECT * FROM LULUSSELEKSI");
+    $this->db->execute();
+    return $this->db->resultSet();
+  }
 }
   
   /*Login tanpa function

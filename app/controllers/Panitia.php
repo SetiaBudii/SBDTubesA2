@@ -48,6 +48,14 @@ class Panitia extends Controller{
         $this->view('templates/footer',$data);
     }
 
+    public function pengumumanSeleksi(){
+        $data['judul'] = 'Pengumuman';
+        // $data['berita'] = $this->model('Panitia_model')->getListLulus();
+        $this->view('templates/headerPanitia',$data);
+        $this->view('panitia/list',$data);
+        $this->view('templates/footer',$data);
+    }
+
     public function updateTahap(){
         if ($this->model('Panitia_model')->updateSeleksi($_POST) > 0 ){
             Flasher::setFlash('berhasil','diverifikasi','success');
